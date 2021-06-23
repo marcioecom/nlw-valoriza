@@ -1,0 +1,17 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "marcio",
+  "password": "pass",
+  "database": "valoriza",
+  "migrations": [
+    "src/database/migrations/*.ts"
+  ],
+  "entities": [
+    "src/entities/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/database/migrations"
+  }
+}
