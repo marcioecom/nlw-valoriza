@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, request } from "express"
+import { Request, Response, NextFunction } from "express"
 import { verify } from 'jsonwebtoken'
 
 interface IPayload {
@@ -19,9 +19,8 @@ export function ensureAuthenticated(
 
   const token = authToken.split(' ')[1]
 
-
   try {
-    const { sub } = verify(token, 'f6cbaee37d7b37ba8406437791b1dc74') as IPayload
+    const { sub } = verify(token, process.env.SECRET) as IPayload
 
     req.user_id = sub
 
@@ -29,6 +28,4 @@ export function ensureAuthenticated(
   } catch (error) {
     return res.status(401).end()
   }
-
-
 }

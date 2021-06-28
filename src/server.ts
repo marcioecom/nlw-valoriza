@@ -1,12 +1,14 @@
 import "reflect-metadata"
 import express, { Request, Response, NextFunction } from 'express'
 import "express-async-errors"
+import "dotenv/config"
 
 import { router } from './routes'
 
 import "./database"
 
 const app = express()
+const port = process.env.PORT
 
 app.use(express.json())
 
@@ -25,4 +27,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   })
 })
 
-app.listen(3000, () => console.log('Server is running...'))
+app.listen(port, () => console.log(`Server running on localhost:${port}`))
